@@ -1,6 +1,11 @@
 ---
-title: "index"
+title: "Welcome!"
 output: html_document
 ---
 
-Testing out homepage
+# Who is Andrea Conover?
+Brief intro
+Link to About
+
+# Projects
+Plotly, Shiny, Tableau, cartography. Skills and tools list.

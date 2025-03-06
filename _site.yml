@@ -1,8 +1,10 @@
 name: "Andrea Conover, Mixed Methods Social Scientist"
 output_dir: "."
 navbar:
-  title: "Home"
+  title: "Andrea Conover"
   right:
+    - text: "About"
+      href: about.html
     - text: 'Projects' ## setting up a drop down menu
       menu:
         - text: 'Plotly'
@@ -13,10 +15,8 @@ navbar:
           href: text3.html
         - text: 'Cartography'
           href: text4.html
-    - text: "About"
-      href: about.html
     - icon: fa-solid fa-house
-      href: http://github.com/ ## change this link to your site, not github in general
+      href: https://andreaconover.github.io/index.html ## change this link to your site, not github in general
 output: 
   html_document:
     theme: readable
