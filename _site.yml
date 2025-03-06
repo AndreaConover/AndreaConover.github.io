@@ -8,13 +8,13 @@ navbar:
     - text: 'Projects' ## setting up a drop down menu
       menu:
         - text: 'Plotly'
-          href: text.html
+          href: plotly.html
         - text: 'Shiny'
-          href: text2.html
+          href: shiny.html
         - text: 'Tableau'
-          href: text3.html
+          href: tableau.html
         - text: 'Cartography'
-          href: text4.html
+          href: cartography.html
     - icon: fa-solid fa-house
       href: https://andreaconover.github.io/index.html ## change this link to your site, not github in general
 output: 
