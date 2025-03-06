@@ -16,7 +16,7 @@ navbar:
         - text: 'Cartography'
           href: cartography.html
     - icon: fa-solid fa-house
-      href: https://andreaconover.github.io/index.html ## change this link to your site, not github in general
+      href: https://andreaconover.github.io/index.html ## link icon to homepage
 output: 
   html_document:
     theme: readable
