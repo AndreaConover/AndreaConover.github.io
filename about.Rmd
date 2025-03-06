@@ -1,5 +1,12 @@
 # All About Andrea
-Longer introduction
+Longer intro.
+
+## Education
+I am currently a candidate in the Master's Program in the Social Sciences at the University of Chicago, on track for degree completion in early June, 2025. Previously, I completed UCI's compressed program to complete my paralegal certificate after I graduated from Scripps College with a Bachelor of Arts in English, cum laude. While at Scripps, I minored in Psychology and worked as a teaching assistant for the Statistics for Psychology course. I also wrote an academic thesis that received honors and formally presented my faculty-nominated research paper during Capstone Day.
+
+
+## Research
+My Master's thesis (forthcoming) examines competing discourses in news coverage of southern California wildfires. My undergraduate thesis, “Post-Wartime vs. Post-War Time: Temporality and Trauma in Jacob’s Room, Mrs. Dalloway, To the Lighthouse, and The Years”, examined Virginia Woolf's use of temporal variance as a way of representing and understanding trauma.
 
 ## Skills
 Skills list
