@@ -1,0 +1,35 @@
+---
+title: "plotlysandbox"
+output: html_document
+---
+# Setup
+``` {r libraries and API echo=FALSE}
+library(ggrepel)
+library(ggtext)
+library(tidyverse)
+```
+``` {r set defaults echo=FALSE}
+# set default theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_light(base_size = 16))
+# set default figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 8, fig.asp = 0.618,
+  fig.retina = 2, dpi = 150
+)
+```
+
+# Plotly
+``` {r importing data echo=FALSE}
+cc_fema <- read.csv("data/ypccc/harm_fema10-23.csv")
+cc_fema_filtered <- cc_fema %>%
+  filter(year == "2019") # review animation slides for animating across years
+```
+``` {r plotly plot echo=FALSE}
+harm_fema_plot <- ggplot(cc_fema_filtered, aes(x = fema, y = harmus)) +
+  geom_point() +
+  scale_x_continuous(breaks = seq(from = 0, to = 500000000, by = 50000000)) +
+  geom_text_repel(size = 2, aes(label = geoname), ) +
+  theme_minimal(base_size = 8)
+harm_fema_plot
+```
+
