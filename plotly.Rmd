@@ -3,4 +3,5 @@ title: "Plotly"
 output: html_document
 ---
 
-Plotly plots
+## Plotly plots
+Plotly plot commentary
