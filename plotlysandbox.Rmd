@@ -6,6 +6,8 @@ output: html_document
 ``` {r libraries and API echo=FALSE}
 library(ggrepel)
 library(ggtext)
+library(plotly)
+library(gganimate)
 library(tidyverse)
 ```
 ``` {r set defaults echo=FALSE}
@@ -21,15 +23,14 @@ knitr::opts_chunk$set(
 # Plotly
 ``` {r importing data echo=FALSE}
 cc_fema <- read.csv("data/ypccc/harm_fema10-23.csv")
-cc_fema_filtered <- cc_fema %>%
-  filter(year == "2019") # review animation slides for animating across years
 ```
 ``` {r plotly plot echo=FALSE}
-harm_fema_plot <- ggplot(cc_fema_filtered, aes(x = fema, y = harmus)) +
+harm_fema_plot <- ggplot(cc_fema, aes(x = fema, y = harmus)) +
   geom_point() +
   scale_x_continuous(breaks = seq(from = 0, to = 500000000, by = 50000000)) +
-  geom_text_repel(size = 2, aes(label = geoname), ) +
-  theme_minimal(base_size = 8)
+  geom_text_repel(size = 2, aes(label = geoname), ) + # unsupported in plotly, can plotly interactive labels work?
+  theme_minimal(base_size = 8) +
+  transition_states(year, 3, 1) # way too fast
 harm_fema_plot
 ```
 
