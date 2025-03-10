@@ -12,7 +12,7 @@ library(tidyverse)
 ```
 ``` {r set defaults echo=FALSE}
 # set default theme for ggplot2
-ggplot2::theme_set(ggplot2::theme_light(base_size = 16))
+ggplot2::theme_set(ggplot2::theme_light(base_size = 8))
 # set default figure parameters for knitr
 knitr::opts_chunk$set(
   fig.width = 8, fig.asp = 0.618,
@@ -26,11 +26,20 @@ cc_fema <- read.csv("data/ypccc/harm_fema10-23.csv")
 ```
 ``` {r plotly plot echo=FALSE}
 harm_fema_plot <- ggplot(cc_fema, aes(x = fema, y = harmus)) +
-  geom_point() +
-  scale_x_continuous(breaks = seq(from = 0, to = 500000000, by = 50000000)) +
-  geom_text_repel(size = 2, aes(label = geoname), ) + # unsupported in plotly, can plotly interactive labels work?
-  theme_minimal(base_size = 8) +
-  transition_states(year, 3, 1) # way too fast
-harm_fema_plot
+  geom_point(aes(color = harmus, frame = year,
+                 text = paste("FEMA: $", fema, "<br>Belief in Harm to US: ", harmus, "%<br>State: ", geoname))) +
+  scale_x_continuous(name = "FEMA Public Assistance Funded Projects Total per State",
+    breaks = seq(from = 0, to = 15000000000, by = 2000000000),
+    labels = c("$0B", "$2B", "$4B", "$6B", "$8B", "$10B", "$12B", "$14B")) +
+  scale_y_continuous(name = "% who believe global warming will harm people in the US",
+    breaks = seq(from = 35, to = 75, by = 5),
+    labels = c("35%", "40%", "45%", "50%", "55%", "60%", "65%", "70%", "75%")) +
+  scale_color_viridis_c(option = "B", guide = "none", begin = 0.2, end = 0.9) +
+  theme_minimal()
+# converting to plotly
+harm_fema_plotly <- ggplotly(harm_fema_plot, tooltip = "text")
+harm_fema_plotly <- harm_fema_plotly %>%
+  animation_opts(1000, easing = "cubic-out")
+harm_fema_plotly
 ```
 
