@@ -2,15 +2,15 @@
 title: "plotlysandbox"
 output: html_document
 ---
-# Setup
-``` {r libraries and API echo=FALSE}
+
+``` {r echo=FALSE}
+# libraries
+library(htmlwidgets)
 library(ggrepel)
 library(ggtext)
 library(plotly)
 library(gganimate)
 library(tidyverse)
-```
-``` {r set defaults echo=FALSE}
 # set default theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_light(base_size = 8))
 # set default figure parameters for knitr
@@ -18,13 +18,9 @@ knitr::opts_chunk$set(
   fig.width = 8, fig.asp = 0.618,
   fig.retina = 2, dpi = 150
 )
-```
-
-# Plotly
-``` {r importing data echo=FALSE}
+# importing data
 cc_fema <- read.csv("data/ypccc/harm_fema10-23.csv")
-```
-``` {r plotly plot echo=FALSE}
+# Plotly
 harm_fema_plot <- ggplot(cc_fema, aes(x = fema, y = harmus)) +
   geom_point(aes(color = harmus, frame = year,
                  text = paste("FEMA: $", fema, "<br>Belief in Harm to US: ", harmus, "%<br>State: ", geoname))) +
@@ -41,5 +37,51 @@ harm_fema_plotly <- ggplotly(harm_fema_plot, tooltip = "text")
 harm_fema_plotly <- harm_fema_plotly %>%
   animation_opts(1000, easing = "cubic-out")
 harm_fema_plotly
+htmlwidgets::saveWidget(as_widget(harm_fema_plotly), "images/harm_fema_plotly.html")
 ```
 
+``` {r}
+# libraries
+library(plotly)
+library(tidyverse)
+## set default theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_light(base_size = 8))
+# set default figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 8, fig.asp = 0.618,
+  fig.retina = 2, dpi = 150
+)
+# importing data
+data_allvars <- read.csv("data/ypccc/YPCCCRegionalizedVariables.csv")
+# tidying
+data_harmus <- data_allvars %>%
+  filter(variable == "harmus") %>%
+  gather("X2010", "X2011", "X2012", "X2013", "X2014", "X2015", "X2016", "X2017", "X2018", "X2019", "X2020", "X2021", "X2022", "X2023", key = "year", value = "harmus")
+data_harmus$year <- gsub("X", "", data_harmus$year) %>%
+  as.numeric()
+```
+``` {r}
+# plotting the plot
+harm_plot <- ggplot(data_harmus, aes(x = year, y = harmus)) +
+    geom_line(aes(color = state)) +
+    scale_x_continuous(breaks = seq(from = 2010, to = 2023, by = 1)) +
+    scale_y_continuous(
+      breaks = seq(from = 0, to = 100, by = 10),
+      labels = scales::label_percent(scale = 1)) +
+    labs(
+      x = "Year",
+      y = "% who believe global warming will harm people in the US"
+    ) +
+    scale_color_viridis_d(option = "B", guide = "none") +
+    theme_minimal()
+harm_plot
+```
+``` {r}
+# plotly plot
+harm_plotly <- ggplotly(harm_plot)
+harm_plotly
+```
+
+``` {r}
+htmlwidgets::saveWidget(as_widget(harm_plotly), "images/harm_plotly.html")
+```

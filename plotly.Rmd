@@ -3,5 +3,15 @@ title: "Plotly"
 output: html_document
 ---
 
-## Plotly plots
-Plotly plot commentary
+## Plotly with Animation
+I used R, ggplot, and Plotly to generate this interactive and animated plot. It allows the viewer to explore both the percent of people in each state who believe that global warming will harm people in the US and FEMA Public Assistance Funded Projects for each state per year. While the outlier of New York in 2012 means that FEMA funding needs to cover funding over $14 billion, the zoom function in Plotly allows users to examine years where data is more clustered.
+
+The public opinion data is derived from the Yale Program on Climate Change Communications public data from 2023 (the YPCCC bears no responsibility for the analyses or interpretations of the data presented here), while the FEMA data was accessed at fema.gov on February 20, 2025.
+
+<iframe src="images/harm_fema_plotly.html" width="800px" height="600px"></iframe>
+
+
+## Another Plotly Plot
+The data in the above plot inspired an observation: belief that global warming will harm people in the US generally seemed to rise over time. To examine that observation, I created another data visualization in Plotly. Once again, the interactivity of this plot is key to its design. Because Plotly allows for additional data when scrolling over and interacting with the legend to filter particular states in or out of the visualization, coding color onto a discrete variable with 51 options (all of the states plus DC) is possible rather than merely creating lines that are too similar to properly distinguish.
+
+<iframe src="images/harm_plotly.html" width="800px" height="600px"></iframe>
