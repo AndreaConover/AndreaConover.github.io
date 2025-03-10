@@ -11,12 +11,13 @@ library(ggmap)
 library(sf)
 library(ggrepel)
 library(ggtext)
+library(gganimate)
 library(tidyverse)
 # register_stadiamaps("YOUR-API-KEY", write = FALSE)
 ```
 ``` {r set defaults echo=FALSE}
 # set default theme for ggplot2
-ggplot2::theme_set(ggplot2::theme_light(base_size = 16))
+ggplot2::theme_set(ggplot2::theme_void(base_size = 16))
 # set default figure parameters for knitr
 knitr::opts_chunk$set(
   fig.width = 8, fig.asp = 0.618,
@@ -37,11 +38,17 @@ state_reproj <- st_transform(state_shp, "WGS84")
 ```
 ``` {r combining states and boundaries}
 fire_map <- ggplot() +
-  geom_sf(data = state_reproj) +
+  geom_sf(data = state_reproj, fill = "tan") +
   geom_sf(data = fire_shp, color = "orange") +
-  coord_sf(xlim = c(-186.011732,-64.371107), ylim = c(14.990202,73.100774))
+  coord_sf(xlim = c(-186.011732,-64.371107), ylim = c(14.990202,73.100774)) +
+  labs(title = "Fire Boundaries in the US, 2000-2018") +
+  theme(
+    plot.background = element_rect(color = "black", fill = "#F4ECE2"),
+    plot.title = element_text(color = "#76562E", face = "bold", family = "serif", hjust = 0.5)
+  )
 fire_map
 ```
+
 ``` {r saving the map}
 ggsave("images/fire_map.png", fire_map)
 ```
