@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -221,6 +224,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -228,6 +300,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -301,15 +383,25 @@ and well-organized with a strong understanding of discretion and
 confidentiality.</p>
 <div id="education" class="section level2">
 <h2>Education</h2>
+<div id="masters-degree" class="section level3">
+<h3>Master’s Degree</h3>
 <p>I am currently a candidate in the Master’s Program in the Social
 Sciences at the University of Chicago, on track for degree completion in
-early June, 2025. Previously, I completed UCI’s compressed program to
-complete my paralegal certificate after I graduated from Scripps College
-with a Bachelor of Arts in English, cum laude. While at Scripps, I
-minored in Psychology and worked as a teaching assistant for the
-Statistics for Psychology course. I also wrote an academic thesis that
-received honors and formally presented my faculty-nominated research
-paper during Capstone Day.</p>
+early June, 2025.</p>
+</div>
+<div id="paralegal-certificate" class="section level3">
+<h3>Paralegal Certificate</h3>
+<p>I completed the University of California, Irvine compressed program
+to complete my paralegal certificate.</p>
+</div>
+<div id="bachelors-degree" class="section level3">
+<h3>Bachelor’s Degree</h3>
+<p>I graduated from Scripps College with a Bachelor of Arts in English,
+cum laude. While at Scripps, I minored in Psychology and worked as a
+teaching assistant for the Statistics for Psychology course. I also
+wrote an academic thesis that received honors and formally presented my
+faculty-nominated research paper during Capstone Day.</p>
+</div>
 </div>
 <div id="research" class="section level2">
 <h2>Research</h2>
@@ -325,10 +417,12 @@ understanding trauma.</p>
 <p>Skills: Problem solving, critical analysis, strategic planning &amp;
 execution, writing, teaching &amp; training, project management</p>
 <p>Technical Proficiencies: MS Office 365, SPSS, R, QGIS, Tableau
-Public, Shiny</p>
+Public, Shiny, ArcGIS StoryMaps</p>
 </div>
 <div id="experience" class="section level2">
 <h2>Experience</h2>
+<div id="teaching-and-entrepreneurship" class="section level3">
+<h3>Teaching and Entrepreneurship</h3>
 <p>In 2022, I founded “Andrea’s Academy,” a private tutoring service for
 students with a client base spanning the West Coast. I provided
 high-quality tutoring in a wide variety of subjects, from biology,
@@ -344,6 +438,10 @@ This experience built on my time with an international tutoring company
 from 2019 to 2022, where I was promoted to develop and implement special
 projects, train new teachers, and advise center directors on academic
 issues.</p>
+</div>
+<div id="project-management-and-administrative-support"
+class="section level3">
+<h3>Project Management and Administrative Support</h3>
 <p>In 2023 and 2024, I worked as a contracted project manager and
 administrative assistant for multiple private advocates for special
 education. I developed systems to track and manage student documentation
@@ -352,15 +450,21 @@ communicated with parents, district representatives, assessors, and
 advocates regarding documents, meetings, and deadlines, to ensure
 compliance with legal requirements for special education student
 support.</p>
+</div>
+<div id="writing-and-editing" class="section level3">
+<h3>Writing and Editing</h3>
 <p>From 2022 to 2024, I also worked as a freelance copywriter and editor
 for multiple private clients, providing detailed feedback on academic
 article, nonfiction book, and novel drafts, including structural
 recommendations, stylistic improvements, and clarifying revisions.</p>
 </div>
 </div>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -393,6 +497,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

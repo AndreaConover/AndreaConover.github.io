@@ -3,7 +3,14 @@ I'm a creative and analytical professional with more than six years of experienc
 
 
 ## Education
-I am currently a candidate in the Master's Program in the Social Sciences at the University of Chicago, on track for degree completion in early June, 2025. Previously, I completed UCI's compressed program to complete my paralegal certificate after I graduated from Scripps College with a Bachelor of Arts in English, cum laude. While at Scripps, I minored in Psychology and worked as a teaching assistant for the Statistics for Psychology course. I also wrote an academic thesis that received honors and formally presented my faculty-nominated research paper during Capstone Day.
+### Master's Degree
+I am currently a candidate in the Master's Program in the Social Sciences at the University of Chicago, on track for degree completion in early June, 2025.
+
+### Paralegal Certificate
+I completed the University of California, Irvine compressed program to complete my paralegal certificate. 
+
+### Bachelor's Degree
+I graduated from Scripps College with a Bachelor of Arts in English, cum laude. While at Scripps, I minored in Psychology and worked as a teaching assistant for the Statistics for Psychology course. I also wrote an academic thesis that received honors and formally presented my faculty-nominated research paper during Capstone Day.
 
 
 ## Research
@@ -13,12 +20,17 @@ My Master's thesis (forthcoming) examines competing discourses in news coverage 
 ## Skills
 Skills: Problem solving, critical analysis, strategic planning & execution, writing, teaching & training, project management
 
-Technical Proficiencies: MS Office 365, SPSS, R, QGIS, Tableau Public, Shiny
+Technical Proficiencies: MS Office 365, SPSS, R, QGIS, Tableau Public, Shiny, ArcGIS StoryMaps
 
 
 ## Experience
+### Teaching and Entrepreneurship
 In 2022, I founded "Andrea's Academy," a private tutoring service for students with a client base spanning the West Coast. I provided high-quality tutoring in a wide variety of subjects, from biology, chemistry, and Algebra 2 to AP social sciences and humanities courses. I mentored students with supportive guidance to build confidence and develop life skills including time management, organization, goal-setting, and critical thinking. I tracked and analyzed student progress to identify students' unique areas of growth or difficulty, communicating with parents to coordinate support for students' academic goals. I also developed and managed the online presence of the company, from the website to social media posts advertising specific services. This experience built on my time with an international tutoring company from 2019 to 2022, where I was promoted to develop and implement special projects, train new teachers, and advise center directors on academic issues.
 
+
+### Project Management and Administrative Support
 In 2023 and 2024, I worked as a contracted project manager and administrative assistant for multiple private advocates for special education. I developed systems to track and manage student documentation and contracts through drafting, revision, and finalization. I also communicated with parents, district representatives, assessors, and advocates regarding documents, meetings, and deadlines, to ensure compliance with legal requirements for special education student support.
 
+
+### Writing and Editing
 From 2022 to 2024, I also worked as a freelance copywriter and editor for multiple private clients, providing detailed feedback on academic article, nonfiction book, and novel drafts, including structural recommendations, stylistic improvements, and clarifying revisions.
