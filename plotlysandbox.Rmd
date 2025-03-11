@@ -20,23 +20,30 @@ knitr::opts_chunk$set(
 )
 # importing data
 cc_fema <- read.csv("data/ypccc/harm_fema10-23.csv")
+```
+``` {r plot}
 # Plotly
 harm_fema_plot <- ggplot(cc_fema, aes(y = fema, x = harmus)) +
   geom_point(aes(color = harmus, frame = year,
-                 text = paste("FEMA: $", fema, "<br>Belief in Harm to US: ", harmus, "%<br>State: ", geoname))) +
+                 text = paste("FEMA: $", scales::label_comma(scale = 0.001)(fema), "<br>Belief in Harm to US: ", harmus, "%<br>State: ", geoname))) +
   scale_y_continuous(name = "FEMA Public Assistance Funded Projects Total per State",
-    breaks = seq(from = 0, to = 15000000000, by = 2000000000),
-    labels = c("$0B", "$2B", "$4B", "$6B", "$8B", "$10B", "$12B", "$14B")) +
+    breaks = seq(from = 0, to = 3500000000, by = 500000000),
+    labels = c("$0", "$500M", "$1B", "$1.5B", "$2B", "$2.5B", "$3B", "$3.5B")) +
   scale_x_continuous(name = "% who believe global warming will harm people in the US",
     breaks = seq(from = 35, to = 75, by = 5),
     labels = c("35%", "40%", "45%", "50%", "55%", "60%", "65%", "70%", "75%")) +
   scale_color_viridis_c(option = "B", guide = "none", begin = 0.2, end = 0.9) +
   theme_minimal()
+harm_fema_plot
+```
+``` {r converting to plotly}
 # converting to plotly
 harm_fema_plotly <- ggplotly(harm_fema_plot, tooltip = "text")
 harm_fema_plotly <- harm_fema_plotly %>%
   animation_opts(1000, easing = "cubic-out")
 harm_fema_plotly
+```
+``` {r saving the widget}
 htmlwidgets::saveWidget(as_widget(harm_fema_plotly), "images/harm_fema_plotly.html")
 ```
 
@@ -63,7 +70,7 @@ data_harmus$year <- gsub("X", "", data_harmus$year) %>%
 ``` {r}
 # plotting the plot
 harm_plot <- ggplot(data_harmus, aes(x = year, y = harmus)) +
-    geom_boxplot(aes(group = year, fill = year)) +
+    geom_boxplot(aes(group = year, fill = mean(harmus))) +
     scale_y_continuous(
       breaks = seq(from = 0, to = 100, by = 10),
       labels = scales::label_percent(scale = 1)) +

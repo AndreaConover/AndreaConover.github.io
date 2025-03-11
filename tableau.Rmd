@@ -1,6 +1,8 @@
 ---
 title: "Tableau"
-output: html_document
+output:
+  html_document:
+    toc: false
 ---
 
 ## 2023 Baby Names

@@ -36,19 +36,34 @@ state_shp <- st_read("data/statemap/cb_2018_us_state_20m.shp")
 # change projection to match fire perimeter data
 state_reproj <- st_transform(state_shp, "WGS84")
 ```
+``` {r importing coastline}
+coast_shp <- st_read("data/ne_50m_coastline/ne_50m_coastline.shp")
+# change projection to match fire perimeter data
+coast_reproj <- st_transform(coast_shp, "WGS84")
+```
+``` {r filtering}
+fire_shp2000 <- fire_shp %>%
+  filter(fireyear == "2000")
+```
 ``` {r combining states and boundaries}
 fire_map <- ggplot() +
-  geom_sf(data = state_reproj, fill = "tan") +
-  geom_sf(data = fire_shp, color = "orange") +
-  coord_sf(xlim = c(-186.011732,-64.371107), ylim = c(14.990202,73.100774)) +
+  geom_sf(data = coast_reproj, color = "#CCA77B", linewidth = 0.2) +
+  geom_sf(data = state_reproj, fill = "#E2CFB6") +
+  geom_sf(data = fire_shp2000, color = "#f59929", fill = "#f59929") +
+  coord_sf(xlim = c(-173,-64), ylim = c(15,72)) +
   labs(title = "Fire Boundaries in the US, 2000-2018") +
+  annotate(geom = "text",
+           x = -170, y = 16.5,
+           label = "2000",
+           color = "#76562E", size = 6,
+           family = "serif", fontface = "bold") +
   theme(
-    plot.background = element_rect(color = "black", fill = "#F4ECE2"),
+    plot.background = element_rect(color = "black", fill = "#F9F5F0"),
     plot.title = element_text(color = "#76562E", face = "bold", family = "serif", hjust = 0.5)
   )
 fire_map
 ```
 
 ``` {r saving the map}
-ggsave("images/fire_map.png", fire_map)
+ggsave("images/fire_map2000.png", fire_map)
 ```

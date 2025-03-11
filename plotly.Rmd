@@ -1,6 +1,8 @@
 ---
 title: "Plotly"
-output: html_document
+output:
+  html_document:
+    toc: false
 ---
 
 ## Plotly with Animation
@@ -9,6 +11,8 @@ I used R, ggplot, and Plotly to generate this interactive and animated plot. It 
 The public opinion data is derived from the Yale Program on Climate Change Communications public data from 2023 (the YPCCC bears no responsibility for the analyses or interpretations of the data presented here), while the FEMA data was accessed at fema.gov on February 20, 2025.
 
 <iframe src="images/harm_fema_plotly.html" width="800px" height="600px"></iframe>
+
+In order to visualize patterns in the data more clearly, an outlier was removed: In 2012, New York received over $14 billion in FEMA Funding after Hurricane Sandy.
 
 
 ## Another Plotly Plot

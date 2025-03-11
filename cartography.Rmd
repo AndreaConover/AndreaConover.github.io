@@ -1,11 +1,13 @@
 ---
 title: "Cartography"
-output: html_document
+output:
+  html_document:
+    toc: false
 ---
 
-## caRtography
+## R
 R map commentary
-![a light brown map of the United States, with fire boundaries from 2010-2018 highlighted in orange](images/fire_map.png)
+![a light brown map of the United States, with fire boundaries from 2010-2018 highlighted in orange](images/fire_map2000.png)
 
 ## QGIS
 I created this choropleth map in QGIS using data from the Chicago Data Portal, Community Data Snapshot summarized to Community Areas from CMAP, and Open StreetMap. It demonstrates a cohesive, pleasant color scheme and use of multiple types of data, including coordination of points, lines, and polygons to communicate information about the relationship between population, roads, and school locations in Chicago.
