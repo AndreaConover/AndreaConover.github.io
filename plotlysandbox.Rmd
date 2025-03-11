@@ -21,13 +21,13 @@ knitr::opts_chunk$set(
 # importing data
 cc_fema <- read.csv("data/ypccc/harm_fema10-23.csv")
 # Plotly
-harm_fema_plot <- ggplot(cc_fema, aes(x = fema, y = harmus)) +
+harm_fema_plot <- ggplot(cc_fema, aes(y = fema, x = harmus)) +
   geom_point(aes(color = harmus, frame = year,
                  text = paste("FEMA: $", fema, "<br>Belief in Harm to US: ", harmus, "%<br>State: ", geoname))) +
-  scale_x_continuous(name = "FEMA Public Assistance Funded Projects Total per State",
+  scale_y_continuous(name = "FEMA Public Assistance Funded Projects Total per State",
     breaks = seq(from = 0, to = 15000000000, by = 2000000000),
     labels = c("$0B", "$2B", "$4B", "$6B", "$8B", "$10B", "$12B", "$14B")) +
-  scale_y_continuous(name = "% who believe global warming will harm people in the US",
+  scale_x_continuous(name = "% who believe global warming will harm people in the US",
     breaks = seq(from = 35, to = 75, by = 5),
     labels = c("35%", "40%", "45%", "50%", "55%", "60%", "65%", "70%", "75%")) +
   scale_color_viridis_c(option = "B", guide = "none", begin = 0.2, end = 0.9) +
@@ -63,8 +63,7 @@ data_harmus$year <- gsub("X", "", data_harmus$year) %>%
 ``` {r}
 # plotting the plot
 harm_plot <- ggplot(data_harmus, aes(x = year, y = harmus)) +
-    geom_line(aes(color = state)) +
-    scale_x_continuous(breaks = seq(from = 2010, to = 2023, by = 1)) +
+    geom_boxplot(aes(group = year, fill = year)) +
     scale_y_continuous(
       breaks = seq(from = 0, to = 100, by = 10),
       labels = scales::label_percent(scale = 1)) +
@@ -72,7 +71,7 @@ harm_plot <- ggplot(data_harmus, aes(x = year, y = harmus)) +
       x = "Year",
       y = "% who believe global warming will harm people in the US"
     ) +
-    scale_color_viridis_d(option = "B", guide = "none") +
+    scale_fill_viridis_c(option = "B", guide = "none", begin = 0.2, end = 0.9) +
     theme_minimal()
 harm_plot
 ```

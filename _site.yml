@@ -20,6 +20,4 @@ navbar:
 output: 
   html_document:
     theme: readable
-    toc: yes
-    toc_float:
-      collapsed: false
+    toc: no # change to yes and add toc_float: // collapsed: false to get it back
