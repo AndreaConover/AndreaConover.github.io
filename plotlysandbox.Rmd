@@ -66,11 +66,15 @@ data_harmus <- data_allvars %>%
   gather("X2010", "X2011", "X2012", "X2013", "X2014", "X2015", "X2016", "X2017", "X2018", "X2019", "X2020", "X2021", "X2022", "X2023", key = "year", value = "harmus")
 data_harmus$year <- gsub("X", "", data_harmus$year) %>%
   as.numeric()
+# adding yearly mean column
+data_harmus <- data_harmus %>%
+  group_by(year) %>%
+  mutate(mean_year = mean(harmus))
 ```
 ``` {r}
 # plotting the plot
 harm_plot <- ggplot(data_harmus, aes(x = year, y = harmus)) +
-    geom_boxplot(aes(group = year, fill = mean(harmus))) +
+    geom_boxplot(aes(group = year, fill = mean_year)) +
     scale_y_continuous(
       breaks = seq(from = 0, to = 100, by = 10),
       labels = scales::label_percent(scale = 1)) +
