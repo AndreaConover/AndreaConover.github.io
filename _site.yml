@@ -7,12 +7,8 @@ navbar:
       href: about.html
     - text: 'Projects' ## setting up a drop down menu
       menu:
-        - text: 'Plotly'
-          href: plotly.html
-        - text: 'Shiny'
-          href: shiny.html
-        - text: 'Tableau'
-          href: tableau.html
+        - text: 'Exploring Climate Change Communications'
+          href: exploringclimatecoms.html
         - text: 'Cartography'
           href: cartography.html
     - icon: fa-solid fa-house

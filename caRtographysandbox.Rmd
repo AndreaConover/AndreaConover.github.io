@@ -41,11 +41,11 @@ coast_shp <- st_read("data/ne_50m_coastline/ne_50m_coastline.shp")
 # change projection to match fire perimeter data
 coast_reproj <- st_transform(coast_shp, "WGS84")
 ```
-``` {r filtering}
+``` {r RUN THIS}
+# filtering by year
 fire_shp2000 <- fire_shp %>%
   filter(fireyear == "2000")
-```
-``` {r combining states and boundaries}
+# making the map
 fire_map <- ggplot() +
   geom_sf(data = coast_reproj, color = "#CCA77B", linewidth = 0.2) +
   geom_sf(data = state_reproj, fill = "#E2CFB6") +
@@ -62,8 +62,6 @@ fire_map <- ggplot() +
     plot.title = element_text(color = "#76562E", face = "bold", family = "serif", hjust = 0.5)
   )
 fire_map
-```
-
-``` {r saving the map}
+# saving the map
 ggsave("images/fire_map2000.png", fire_map)
 ```

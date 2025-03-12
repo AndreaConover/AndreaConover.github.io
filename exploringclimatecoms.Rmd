@@ -1,0 +1,22 @@
+---
+title: "Exploring Climate Change Communications"
+output:
+  html_document:
+    toc: false
+---
+
+## Data Visualization
+I used R, ggplot, and Plotly to generate this interactive and animated plot. It allows the viewer to explore both the percent of people in each state who believe that global warming will harm people in the US and FEMA Public Assistance Funded Projects for each state per year. While the variation in funding amounts means that FEMA funding needs to be scaled up to $4 billion, the zoom function in Plotly allows users to examine years where data is more clustered.
+
+<iframe src="images/harm_fema_plotly.html" width="800px" height="600px"></iframe>
+
+The public opinion data is derived from the Yale Program on Climate Change Communications public data from 2023 (the YPCCC bears no responsibility for the analyses or interpretations of the data presented here), while the FEMA data was accessed at fema.gov on February 20, 2025. In order to visualize patterns in the data more clearly, an outlier was removed: In 2012, New York received over $14 billion in FEMA Funding after Hurricane Sandy.
+
+The data in the above plot inspired an observation: belief that global warming will harm people in the US generally seemed to rise over time. To examine that observation, I created another data visualization in Plotly. I reinforced the general trend visible in the box plots by using color based on the mean values, so that the plot was both more aesthetically pleasing and easier to read at a glance.
+
+<iframe src="images/harm_plotly.html" width="800px" height="600px"></iframe>
+
+
+## Continuing Explorations: An App
+I created this Shiny app to continue exploring a subset of the YPCCC data from 2023. You can view it below or click [this link](https://aconover.shinyapps.io/assignment-5-AndreaConover/) to view it in your browser. I created three interactive plots to visualize the data and encourage viewers to consider different variables either over geographic regions, over time, or in relation to another variable. All of the code was written in R.
+<iframe src="https://aconover.shinyapps.io/assignment-5-AndreaConover/" width="800px" height="600px"></iframe>
